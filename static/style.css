@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    color: white;
+}
+
+/* BACKGROUND ANIMASI */
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, #00f2fe22, transparent),
+        radial-gradient(circle at 80% 80%, #4facfe22, transparent),
+        #0f2027;
+    z-index: -2;
+}
+
+/* PARTICLES */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#00f2fe 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.2;
+    animation: moveParticles 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveParticles {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100px);
+    }
+}
+
+/* CENTER */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CARD FUTURISTIC */
+.card {
+    width: 430px;
+    padding: 40px;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(0, 255, 255, 0.2);
+
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.2),
+        0 0 40px rgba(0, 255, 255, 0.1);
+
+    text-align: center;
+
+    animation: fadeUp 1s ease;
+}
+
+/* TITLE */
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    color: #00f2fe;
+}
+
+/* SUB */
+.sub {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-bottom: 30px;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 15px;
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    color: white;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+/* HOVER */
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00f2fe;
+}
+
+/* RESULT */
+.result {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 10px;
+
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00f2fe;
+
+    animation: fadeIn 1s ease;
+}
+
+/* ANIMASI */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

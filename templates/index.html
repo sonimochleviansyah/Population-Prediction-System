@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AI Population Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="bg"></div>
+    <div class="particles"></div>
+
+    <div class="container">
+        <div class="card">
+
+            <h1>⚡ AI Predictor</h1>
+            <p class="sub">Bandung Barat Population Intelligence</p>
+
+            <form action="/predict" method="post">
+                <input type="number" name="tahun" placeholder="Enter year (e.g. 2026)" required>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if prediksi %}
+            <div class="result">
+                {{ prediksi }}
+            </div>
+            {% endif %}
+
+            <canvas id="chart"></canvas>
+
+            <div id="data" data-tahun='{{ tahun | tojson }}' data-penduduk='{{ penduduk | tojson }}'>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const dataDiv = document.getElementById("data");
+
+            const tahun = JSON.parse(dataDiv.getAttribute("data-tahun"));
+            const penduduk = JSON.parse(dataDiv.getAttribute("data-penduduk"));
+
+            const ctx = document.getElementById("chart");
+
+            new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: tahun,
+                    datasets: [{
+                        label: "Population",
+                        data: penduduk,
+                        borderColor: "#00f2fe",
+                        backgroundColor: "rgba(0,242,254,0.1)",
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: "#00f2fe",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: { color: "#00f2fe" }
+                        }
+                    },
+                    scales: {
+                        x: { ticks: { color: "#aaa" } },
+                        y: { ticks: { color: "#aaa" } }
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
